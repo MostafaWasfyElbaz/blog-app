@@ -1,6 +1,11 @@
 import { Router } from "express";
-const baseRouter = Router();
+import * as modules from "./modules/authModule";
 
-const routes = {};
+const baseRouter = Router();
+const routes = {
+  auth: "/auth",
+};
+
+baseRouter.use(routes.auth, modules.authRouter);
 
 export default baseRouter;
