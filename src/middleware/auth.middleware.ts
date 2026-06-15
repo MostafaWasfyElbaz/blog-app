@@ -2,7 +2,7 @@ import { verifyToken, invalidCredentialsError, notFoundError } from "../utils";
 import { IUser, TokenType, IPayload } from "../common";
 import { Request, Response, NextFunction } from "express";
 import { HydratedDocument } from "mongoose";
-import {UserRepository} from "../DB";
+import { UserRepository } from "../DB";
 
 const userModel = new UserRepository();
 

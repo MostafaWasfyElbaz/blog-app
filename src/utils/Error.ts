@@ -29,3 +29,15 @@ export class validationError extends ApplicationException {
     super(msg.join("\n"), statusCode, options);
   }
 }
+
+export class faildToCreatePost extends ApplicationException {
+  constructor(msg: string = "Failed to create post", statusCode: number = 500) {
+    super(msg, statusCode);
+  }
+}
+
+export class faildToDeletePost extends ApplicationException {
+  constructor(msg: string = "Failed to delete post", statusCode: number = 500) {
+    super(msg, statusCode);
+  }
+}

@@ -1,7 +1,7 @@
 import DBRepository from "../Repository/db.repository";
 import { IUser, IUserRepo } from "../../common";
 import { HydratedDocument, Model } from "mongoose";
-import User from "../models/user.model";
+import {User} from "../models";
 
 export class UserRepository
   extends DBRepository<IUser>
