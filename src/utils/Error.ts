@@ -41,3 +41,9 @@ export class faildToDeletePost extends ApplicationException {
     super(msg, statusCode);
   }
 }
+
+export class faildToUpdatePost extends ApplicationException {
+  constructor(msg: string = "Failed to update post", statusCode: number = 500) {
+    super(msg, statusCode);
+  }
+}

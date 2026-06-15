@@ -2,7 +2,7 @@ import { IPostServices } from "../../common";
 import { NextFunction, Request, Response } from "express";
 import { CreatePostDTO, DeletePostDTO, UpdatePostDTO } from "./post.DTO";
 import { postRepository } from "../../DB";
-import { faildToCreatePost, faildToDeletePost, successHandler } from "../../utils";
+import { faildToCreatePost, faildToDeletePost, faildToUpdatePost, successHandler } from "../../utils";
 
 export class PostServices implements IPostServices {
   constructor(private readonly postRepo = new postRepository()) {}
@@ -65,6 +65,11 @@ export class PostServices implements IPostServices {
       data.content = content;
     }
     const post = await this.postRepo.updatePost(id, res.locals.user.id, data);
+
+    if (!post) {
+      throw new faildToUpdatePost();
+    }
+
     return successHandler({
       res,
       msg: "Post updated successfully",

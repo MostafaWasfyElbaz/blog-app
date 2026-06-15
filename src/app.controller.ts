@@ -4,6 +4,8 @@ import baseRouter from "./routes";
 import { NextFunction, Request, Response } from "express";
 import { IError } from "./common";
 import dotenv from "dotenv";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./docs/swagger.json";
 
 dotenv.config({
   path: "./config/.env",
@@ -13,6 +15,10 @@ export const bootstrap = async (): Promise<void> => {
   const app = express();
   app.use(express.json());
   await DBConnection();
+
+  // Swagger Documentation Route
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
   app.use("/api/v1", baseRouter);
   app.use("/{*dummy}", (req, res) => {
     res.status(404).json({
