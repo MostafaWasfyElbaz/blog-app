@@ -18,6 +18,12 @@ export class invalidCredentialsError extends ApplicationException {
   }
 }
 
+export class userNotFoundError extends ApplicationException {
+  constructor(msg: string = "User not found", statusCode: number = 404) {
+    super(msg, statusCode);
+  }
+}
+
 export class notFoundError extends ApplicationException {
   constructor(msg: string = "Not Found", statusCode: number = 404) {
     super(msg, statusCode);

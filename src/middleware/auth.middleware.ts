@@ -1,4 +1,9 @@
-import { verifyToken, invalidCredentialsError, notFoundError } from "../utils";
+import {
+  verifyToken,
+  invalidCredentialsError,
+  notFoundError,
+  userNotFoundError,
+} from "../utils";
 import { IUser, TokenType, IPayload } from "../common";
 import { Request, Response, NextFunction } from "express";
 import { HydratedDocument } from "mongoose";
@@ -43,7 +48,7 @@ export const decodeToken = async ({
     }
     const user = await userModel.findById({ id: decodedToken.id });
     if (!user) {
-      throw new notFoundError();
+      throw new userNotFoundError();
     }
     return { user: user as HydratedDocument<IUser>, decodedToken };
   } catch (error) {
