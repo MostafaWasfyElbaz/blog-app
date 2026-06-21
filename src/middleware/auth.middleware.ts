@@ -34,8 +34,6 @@ export const decodeToken = async ({
       secret = process.env.ACCESS_SIGNITURE as string;
     } else if (tokenType == TokenType.refresh) {
       secret = process.env.REFRESH_SIGNITURE as string;
-    } else if (tokenType == TokenType.temp) {
-      secret = process.env.TEMP_SIGNITURE as string;
     } else {
       throw new invalidCredentialsError();
     }
